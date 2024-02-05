@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete Books</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap">
+</head>
+<body>
+<h1>Delete Books</h1>
+<div th:if="${successMessage}" class="success-message">
+    <p th:text="${successMessage}"></p>
+</div>
+
+<div th:if="${errorMessage}" class="error-message">
+    <p th:text="${errorMessage}"></p>
+</div>
+<form th:action="@{/web/books/delete}" method="post">
+    <div th:each="book : ${books}" class="checkbox-container">
+        <label>
+            <input type="checkbox" name="bookIdsToDelete" th:value="${book.id}" />
+            <span th:text="${book.title + ' by ' + book.author}"></span>
+        </label>
+    </div>
+    <input type="submit" value="Delete Selected Books" />
+</form>
+<a th:href="@{/web/books}">Return to Book List</a>
+</body>
+</html>

@@ -7,7 +7,12 @@
 </head>
 <body>
 <h1>Book List</h1>
-<a th:href="@{/addBookForm}">Add Book</a>
+<div class="button-container">
+    <a th:href="@{/web/books/addBookForm}">Add Book</a>
+    <a th:href="@{/web/books/deleteBooks}">Delete Books</a>
+    <a th:href="@{/web/books/filterPage}">Filter</a>
+    <a th:href="@{/web/books}">Show All</a>
+</div>
 <br/><br/>
 <table border="1">
     <thead>
@@ -15,6 +20,8 @@
         <th>Title</th>
         <th>Author</th>
         <th>Year</th>
+        <th>Status</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -22,6 +29,10 @@
         <td th:text="${book.title}"></td>
         <td th:text="${book.author}"></td>
         <td th:text="${book.year}"></td>
+        <td th:text="${book.status}"></td>
+        <td>
+            <a th:href="@{'/web/books/editBookForm/' + ${book.id}}" class="edit-form">Edit</a>
+        </td>
     </tr>
     </tbody>
 </table>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Book</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap">
+</head>
+<body>
+<h1>Edit Book</h1>
+<form th:action="@{/web/books/editBook}" method="post" th:object="${book}">
+    <input type="hidden" th:field="*{id}" />
+    <label>Title: <input type="text" th:field="*{title}" th:value="${book.title}" /></label><br/>
+    <label>Author: <input type="text" th:field="*{author}" th:value="${book.author}" /></label><br/>
+    <label>Year: <input type="text" th:field="*{year}" th:value="${book.year}" /></label><br/>
+    <label>Status:
+        <select th:field="*{status}" th:value="${book.status}">
+            <option value="Reading">Reading</option>
+            <option value="Want to Read">Want to Read</option>
+            <option value="Read">Read</option>
+        </select>
+    </label><br/>
+    <input type="submit" value="Save Changes" />
+</form>
+</body>
+</html>

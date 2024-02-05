@@ -7,10 +7,17 @@
 </head>
 <body>
 <h1>Add Book</h1>
-<form th:action="@{/addBook}" th:object="${newBook}" method="post">
+<form th:action="@{/web/books/addBook}" th:object="${newBook}" method="post">
     <label>Title: <input type="text" th:field="*{title}" /></label><br/>
     <label>Author: <input type="text" th:field="*{author}" /></label><br/>
     <label>Year: <input type="text" th:field="*{year}" /></label><br/>
+    <label>Status:
+        <select th:field="*{status}">
+            <option value="Reading">Reading</option>
+            <option value="Want to Read">Want to Read</option>
+            <option value="Read">Read</option>
+        </select>
+    </label><br/>
     <input type="submit" value="Add Book" />
 </form>
 </body>

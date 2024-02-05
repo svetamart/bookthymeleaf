@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Filter Books</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merienda:wght@400;700&display=swap">
+</head>
+<body>
+<h1>Filter Books</h1>
+<form th:action="@{/web/books/filter}" method="post">
+    <label class="filter-label">
+        <span class="label-text">Authors</span>
+    </label>
+    <div th:each="author : ${uniqueAuthors}">
+        <label>
+            <input type="checkbox" name="author" th:value="${author}" />
+            <span th:text="${author}"></span>
+        </label>
+    </div>
+
+    <label class="filter-label">
+        <span class="label-text">Statuses</span>
+    </label>
+    <div>
+        <label>
+            <input type="checkbox" name="status" value="Reading" />
+            <span>Reading</span>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="checkbox" name="status" value="Want to Read" />
+            <span>Want to Read</span>
+        </label>
+    </div>
+    <div>
+        <label>
+            <input type="checkbox" name="status" value="Read" />
+            <span>Read</span>
+        </label>
+    </div>
+    <label class="filter-label">
+        <span class="label-text">Year Range</span>
+        <input type="text" name="minYear" placeholder="Min Year"/>
+        <input type="text" name="maxYear" placeholder="Max Year"/>
+    </label><br/>
+    <input type="submit" value="Apply Filter"/>
+</form>
+</body>
+</html>

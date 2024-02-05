@@ -1,0 +1,4 @@
+FROM postgres:13.2-alpine
+ENV POSTGRES_DB mybooks
+ENV POSTGRES_USER mybooks
+ENV POSTGRES_PASSWORD secret
